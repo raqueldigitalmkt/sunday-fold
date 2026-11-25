@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF5E6">
+  <meta name="description" content="Sunday Fold is a neighbourhood bakery in Brighton. Sourdough, pastries and coffee.">
+  <title>Sunday Fold — A little Sunday, every day</title>
+  <link rel="icon" href="./public/media/logo.png">
+  <link rel="preload" href="./public/media/Shrikhand-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./motion.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <a class="brand" href="#top" aria-label="Sunday Fold home">
+      <img src="./public/media/logo.png" width="91" height="56" alt="Sunday Fold">
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#rituals">Rituals</a>
+      <a href="#box">The box</a>
+      <a href="#menu">Menu</a>
+      <a class="nav-story-mobile" href="#brighton">Our story</a>
+    </nav>
+    <a class="masthead-story" href="#brighton">Our story</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A neighbourhood bakery · Brighton</p>
+        <h1 id="hero-title">Good mornings<br>start here.</h1>
+        <a class="cta cta-blue" href="#menu">Explore the menu</a>
+      </div>
+      <figure class="hero-product" data-drift>
+        <div class="hero-images">
+          <img src="./public/media/hero-sky.webp" srcset="./public/media/hero-sky-small.webp 690w, ./public/media/hero-sky.webp 1086w"
+               sizes="(max-width: 760px) 100vw, 49vw" fetchpriority="high" width="1086" height="1448"
+               alt="A woman holding a butter croissant and a coffee against a blue Brighton sky.">
+          <img class="hero-cup" src="./public/media/flaky.webp" width="1086" height="1448"
+               alt="" aria-hidden="true">
+        </div>
+      </figure>
+    </section>
+
+    <section class="rituals section-gutter" id="rituals" aria-labelledby="rituals-title">
+      <div class="rituals-intro" data-reveal>
+        <h2 id="rituals-title">The little<br>rituals.</h2>
+        <p>A coffee on the way. A pastry for the road.</p>
+      </div>
+      <div class="ritual-gallery">
+        <figure class="ritual-coffee" data-ritual-frame>
+          <div class="image-clip"><img src="./public/media/ritual-coffee.webp" loading="lazy" decoding="async" width="780" height="1040"
+            alt="A Sunday Fold coffee cup by a pair of trainers on a Brighton pavement."></div>
+        </figure>
+        <figure class="ritual-pastry" data-ritual-frame>
+          <div class="image-clip"><img src="./public/media/ritual-pastry.webp" loading="lazy" decoding="async" width="840" height="1120"
+            alt="A woman takes a pavement selfie with a pain au chocolat in a Sunday Fold bag."></div>
+        </figure>
+        <figure class="ritual-fold" data-ritual-frame>
+          <div class="image-clip"><img src="./public/media/ritual-fold.webp" loading="lazy" decoding="async" width="750" height="1000"
+            alt="A folded pastry in a Sunday Fold paper bag beside a blue coffee cup."></div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="box-scroll" id="box" aria-labelledby="box-title">
+      <h2 class="sr-only" id="box-title">Something good is unfolding.</h2>
+      <div class="box-track" id="box-gesture">
+        <div class="box-stage">
+          <figure class="box-media" id="box-media">
+            <img class="box-still" src="./public/media/opening-refined-start.jpg" width="1536" height="1024" loading="lazy" decoding="async"
+                 alt="A hand holds the lid of the yellow Sunday Fold box, with pastries already peeking out.">
+            <video class="box-video" data-src="./public/media/opening-refined-lid.mp4" poster="./public/media/opening-refined-start.jpg"
+                   playsinline muted preload="none" aria-hidden="true" tabindex="-1"></video>
+            <img class="access-open" src="./public/media/opening-refined-end.jpg" width="1536" height="1024" loading="lazy" decoding="async"
+                 alt="The open Sunday Fold box holds a butter croissant, a pain au chocolat and a fruit Danish.">
+          </figure>
+          <div class="box-controls">
+            <div class="box-progress" aria-hidden="true"><i></i></div>
+            <a class="box-skip" href="#bakes">Skip the box sequence</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bakes section-gutter" id="bakes" aria-labelledby="bakes-title">
+      <div class="bakes-intro" data-reveal>
+        <h2 id="bakes-title">From the oven.</h2>
+        <a class="text-link" href="#menu">See the full menu</a>
+      </div>
+      <div class="pastries">
+        <figure data-reveal>
+          <div class="image-clip"><img src="./public/media/cheddar-chive-melted.jpg" loading="lazy" decoding="async" width="1200" height="800"
+            alt="A golden folded pastry topped with melted Cheddar and chopped chives."></div>
+          <figcaption>Cheddar &amp; Chive Fold</figcaption>
+        </figure>
+        <figure data-reveal>
+          <div class="image-clip"><img src="./public/media/pain-au-chocolat-natural.jpg" loading="lazy" decoding="async" width="1100" height="982" alt="Two pains au chocolat on a stoneware plate, showing dark chocolate and crisp pastry layers."></div>
+          <figcaption>Pain au Chocolat</figcaption>
+        </figure>
+        <figure data-reveal>
+          <div class="image-clip"><img src="./public/media/fruit-danish-natural.jpg" loading="lazy" decoding="async" width="1100" height="1100" alt="A flaky fruit Danish filled with vanilla custard, figs and blackberries."></div>
+          <figcaption>Seasonal Fruit Danish</figcaption>
+        </figure>
+        <figure data-reveal>
+          <div class="image-clip food-crop bread-photo"><img src="./public/media/house-sourdough-editorial.jpg" loading="lazy" decoding="async" width="1086" height="1448"
+            alt="A crusty sourdough loaf on linen with two slices showing its open crumb."></div>
+          <figcaption><a class="bread-menu-link" href="#menu-sourdough">House Sourdough</a></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="menu section-gutter" id="menu" aria-labelledby="menu-title">
+      <div class="menu-copy">
+        <h2 id="menu-title">On the menu.</h2>
+        <div class="menu-lists">
+          <div class="menu-category">
+            <h3>From the oven</h3>
+            <dl>
+              <div id="menu-sourdough" data-reveal><dt>House Sourdough</dt><dd class="menu-price">£5.50</dd><dd class="menu-description">Our signature naturally leavened loaf.</dd></div>
+              <div data-reveal><dt>Butter Croissant</dt><dd class="menu-price">£3.20</dd><dd class="menu-description">A golden, flaky all-butter croissant.</dd></div>
+              <div data-reveal><dt>Pain au Chocolat</dt><dd class="menu-price">£3.60</dd><dd class="menu-description">Buttery pastry with a dark chocolate centre.</dd></div>
+              <div data-reveal><dt>Cinnamon Morning Bun</dt><dd class="menu-price">£3.80</dd><dd class="menu-description">A soft, buttery swirl with cinnamon sugar.</dd></div>
+              <div data-reveal><dt>Cheddar &amp; Chive Fold</dt><dd class="menu-price">£4.50</dd><dd class="menu-description">A savoury pastry with mature Cheddar and chives.</dd></div>
+              <div data-reveal><dt>Seasonal Fruit Danish</dt><dd class="menu-price">£4.20</dd><dd class="menu-description">Flaky pastry with custard and seasonal fruit.</dd></div>
+            </dl>
+          </div>
+          <div class="menu-category">
+            <h3>Coffee</h3>
+            <dl>
+              <div><dt>Espresso</dt><dd>£2.60</dd></div>
+              <div><dt>Americano</dt><dd>£3.00</dd></div>
+              <div><dt>Flat White</dt><dd>£3.50</dd></div>
+              <div><dt>Cappuccino</dt><dd>£3.60</dd></div>
+              <div><dt>Latte</dt><dd>£3.70</dd></div>
+            </dl>
+          </div>
+          <div class="menu-category">
+            <h3 class="sr-only">Tea</h3>
+            <dl>
+              <div><dt>Tea</dt><dd class="menu-price">£2.80</dd><dd class="menu-description">English Breakfast, Earl Grey or peppermint.</dd></div>
+            </dl>
+          </div>
+          <figure class="food-crop coffee-photo">
+            <img src="./public/media/flat-white-editorial.jpg" width="1086" height="1448" loading="lazy" decoding="async"
+                 alt="A hand holds a blue cup of flat white with latte art on a sunny yellow table.">
+          </figure>
+        </div>
+        <p class="menu-note">Please speak to our team about allergens before ordering.</p>
+      </div>
+    </section>
+
+    <section class="neighbourhood" id="brighton" aria-labelledby="closing-title">
+      <article class="closing-copy section-gutter">
+        <div>
+          <p class="eyebrow">Sunday Fold · Brighton</p>
+          <h2 id="closing-title">A little Sunday,<br>every day.</h2>
+        </div>
+        <div>
+          <p class="closing-positioning">Your everyday pause, made a little better.</p>
+          <p class="founder-story">Sunday Fold began with Sunday get-togethers for friends. Lucy Bennett baked the bread and pastries, and Daniel Reed made the coffee. Today, Lucy leads the baking while Daniel looks after the coffee and welcomes customers. Together, they bring that same feeling of being welcomed into a friend’s home to their neighbourhood bakery in Brighton.</p>
+        </div>
+      </article>
+      <div class="visit">
+        <figure class="closing-photo">
+          <img src="./public/media/brighton.webp" loading="lazy" decoding="async" width="1060" height="1413"
+               alt="The blue and butter-yellow Sunday Fold bakery frontage, with bread in the window.">
+        </figure>
+        <div class="visit-details">
+          <h3>Opening hours</h3>
+          <dl class="opening-hours">
+            <div><dt>Monday</dt><dd>Closed</dd></div>
+            <div><dt>Tuesday to Friday</dt><dd><time datetime="07:30">7.30am</time>–<time datetime="16:00">4pm</time></dd></div>
+            <div><dt>Saturday and Sunday</dt><dd><time datetime="08:00">8am</time>–<time datetime="15:00">3pm</time></dd></div>
+          </dl>
+          <p>Eat in or take away. Orders can be collected in the shop.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#top" aria-label="Sunday Fold home"><img src="./public/media/logo.png" width="91" height="56" alt="Sunday Fold"></a>
+    <address class="footer-contacts">
+      <a href="mailto:hello@sundayfold.uk">hello@sundayfold.uk</a>
+      <span>@sundayfoldbakery</span>
+    </address>
+    <a class="text-link" href="#brighton">Our story</a>
+  </footer>
+</body>
+</html>
