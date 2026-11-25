@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1086 1448">
+  <defs>
+    <radialGradient id="feather">
+      <stop offset="69%" stop-color="white"/>
+      <stop offset="85%" stop-color="white" stop-opacity=".65"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="719" cy="620" rx="179" ry="221" transform="rotate(32 719 620)" fill="url(#feather)"/>
+</svg>

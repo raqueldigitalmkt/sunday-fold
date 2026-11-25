@@ -5,30 +5,35 @@
   const media = section.querySelector('.box-media');
   const video = media.querySelector('video');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const compact = matchMedia('(max-width: 760px)');
   const detail = [...document.querySelectorAll('[data-drift]')];
   const hero = document.querySelector('.hero');
   const ritualGallery = document.querySelector('.ritual-gallery');
   const ritualFrames = [...ritualGallery.querySelectorAll('[data-ritual-frame]')];
   const story = document.querySelector('.founder-story');
+  const storyTrack = document.querySelector('.story-track');
+  const storyCopy = story.closest('.closing-copy');
   const plates = document.querySelectorAll('.pastries .image-clip');
   let wordCount = 0;
   const clampProgress = value => Math.max(0, Math.min(1, value));
 
   function prepareStory() {
     if (wordCount) return;
-    const words = document.createDocumentFragment();
-    for (const part of story.textContent.split(/(\s+)/)) {
-      if (!part || /^\s+$/.test(part)) {
-        words.append(part);
-        continue;
+    for (const paragraph of story.querySelectorAll('p')) {
+      const words = document.createDocumentFragment();
+      for (const part of paragraph.textContent.split(/(\s+)/)) {
+        if (!part || /^\s+$/.test(part)) {
+          words.append(part);
+          continue;
+        }
+        const word = document.createElement('span');
+        word.className = 'story-word';
+        word.style.setProperty('--word-index', wordCount++);
+        word.textContent = part;
+        words.append(word);
       }
-      const word = document.createElement('span');
-      word.className = 'story-word';
-      word.style.setProperty('--word-index', wordCount++);
-      word.textContent = part;
-      words.append(word);
+      paragraph.replaceChildren(words);
     }
-    story.replaceChildren(words);
   }
 
   function paintEditorialMotion(viewport) {
@@ -48,9 +53,12 @@
     }
 
     const storyRect = story.getBoundingClientRect();
-    // Start as the paragraph enters and finish while the last line is still on screen.
-    const storyTravel = storyRect.height + viewport * .58;
-    const value = clampProgress((viewport * .91 - storyRect.top) / storyTravel);
+    const storyTop = getComputedStyle(storyCopy).top;
+    const distance = storyTrack.offsetHeight - storyCopy.offsetHeight;
+    // On tall desktop screens, hold the readable block during its colour sweep.
+    const value = clampProgress(storyTop !== 'auto' && distance > 0
+      ? (parseFloat(storyTop) - storyTrack.getBoundingClientRect().top) / distance
+      : (viewport * .92 - storyRect.top) / (storyRect.height + viewport * .68));
     story.style.setProperty('--story-progress', (value * (wordCount + 2)).toFixed(2));
   }
   const reveals = [...document.querySelectorAll('[data-reveal]')];
@@ -64,8 +72,10 @@
   let observer;
   let pendingFrame = null;
 
+  const canScrub = () => !reduce.matches && !failed;
+
   function startVideo() {
-    if (loading || failed || reduce.matches) return;
+    if (loading || !canScrub()) return;
     loading = true;
     video.preload = 'auto';
     video.src = video.dataset.src;
@@ -73,7 +83,7 @@
   }
 
   function seek() {
-    if (reduce.matches || failed || !loading || video.readyState < 1 ||
+    if (!canScrub() || !loading || video.readyState < 1 ||
         !Number.isFinite(video.duration) || video.seeking) return;
     const target = Math.min(video.duration - 0.5 / approved.fps,
       (requestedFrame + 0.5) / approved.fps);
@@ -92,18 +102,24 @@
   function paint() {
     queued = 0;
     if (reduce.matches) return;
-    if (!failed) {
+    const viewport = window.innerHeight;
+    if (canScrub()) {
       const rect = track.getBoundingClientRect();
-      const sticky = parseFloat(getComputedStyle(stage).top) || 0;
-      progress = Math.max(0, Math.min(1, (sticky - rect.top) /
-        Math.max(1, rect.height - stage.offsetHeight)));
+      if (compact.matches) {
+        // Animate as the scene enters the viewport, with no extra scroll space.
+        const entry = viewport * .97;
+        const settle = viewport * .27;
+        progress = clampProgress((entry - rect.top) / (entry - settle));
+      } else {
+        const sticky = parseFloat(getComputedStyle(stage).top) || 0;
+        progress = clampProgress((sticky - rect.top) / Math.max(1, rect.height - stage.offsetHeight));
+      }
       requestedFrame = Math.round(progress * (approved.frames - 1));
       section.style.setProperty('--progress', progress.toFixed(4));
       if (inRange || !observer) startVideo();
       seek();
     }
 
-    const viewport = window.innerHeight;
     paintEditorialMotion(viewport);
     const heroProgress = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(hero.offsetHeight, 1)));
     hero.style.setProperty('--hero-shift', (-heroProgress * 33).toFixed(2) + 'px');
@@ -127,13 +143,11 @@
   }
 
   function syncMotion() {
-    section.classList.toggle('is-enhanced', !reduce.matches && !failed);
+    section.classList.toggle('is-scrubbing', canScrub());
+    section.classList.toggle('is-enhanced', canScrub() && !compact.matches);
+    if (!canScrub()) media.classList.remove('is-video-visible');
     if (!reduce.matches) prepareStory();
     document.documentElement.classList.toggle('has-scroll-motion', !reduce.matches);
-    if (reduce.matches) {
-      media.classList.remove('is-video-visible');
-      video.pause();
-    }
     schedule();
   }
 
@@ -161,14 +175,14 @@
   video.addEventListener('error', () => {
     failed = true;
     media.classList.remove('is-video-visible');
-    // Keep the pinned interval in place while the visitor is inside it.
-    media.classList.add('is-unavailable');
-    if (!inRange) section.classList.remove('is-enhanced');
+    section.classList.remove('is-enhanced', 'is-scrubbing');
   });
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
   window.addEventListener('pageshow', schedule);
-  if (reduce.addEventListener) reduce.addEventListener('change', syncMotion);
-  else reduce.addListener(syncMotion);
+  for (const preference of [reduce, compact]) {
+    if (preference.addEventListener) preference.addEventListener('change', syncMotion);
+    else preference.addListener(syncMotion);
+  }
   syncMotion();
 })();

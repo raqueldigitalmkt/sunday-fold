@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#FFF5E6">
   <meta name="description" content="Sunday Fold is a neighbourhood bakery in Brighton. Sourdough, pastries and coffee.">
   <title>Sunday Fold — A little Sunday, every day</title>
-  <link rel="icon" href="./public/media/logo.png">
+  <link rel="icon" href="./public/media/sunday-fold-blue.svg">
   <link rel="preload" href="./public/media/Shrikhand-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./style.css">
   <script defer src="./motion.js"></script>
@@ -15,7 +15,7 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="masthead">
     <a class="brand" href="#top" aria-label="Sunday Fold home">
-      <img src="./public/media/logo.png" width="91" height="56" alt="Sunday Fold">
+      <img src="./public/media/sunday-fold-blue.svg" width="91" height="56" alt="Sunday Fold">
     </a>
     <nav aria-label="Main navigation">
       <a href="#rituals">Rituals</a>
@@ -35,9 +35,12 @@
       </div>
       <figure class="hero-product" data-drift>
         <div class="hero-images">
-          <img src="./public/media/hero-sky.webp" srcset="./public/media/hero-sky-small.webp 690w, ./public/media/hero-sky.webp 1086w"
+          <picture>
+            <source media="(min-width: 1051px) and (min-aspect-ratio: 1/1)" srcset="./public/media/hero-croissant-landscape.webp">
+            <img src="./public/media/hero-sky.webp" srcset="./public/media/hero-sky-small.webp 690w, ./public/media/hero-sky.webp 1086w"
                sizes="(max-width: 760px) 100vw, 49vw" fetchpriority="high" width="1086" height="1448"
                alt="A woman holding a butter croissant and a coffee against a blue Brighton sky.">
+          </picture>
           <img class="hero-cup" src="./public/media/flaky.webp" width="1086" height="1448"
                alt="" aria-hidden="true">
         </div>
@@ -70,11 +73,11 @@
       <div class="box-track" id="box-gesture">
         <div class="box-stage">
           <figure class="box-media" id="box-media">
-            <img class="box-still" src="./public/media/opening-refined-start.jpg" width="1536" height="1024" loading="lazy" decoding="async"
-                 alt="A hand holds the lid of the yellow Sunday Fold box, with pastries already peeking out.">
-            <video class="box-video" data-src="./public/media/opening-refined-lid.mp4" poster="./public/media/opening-refined-start.jpg"
+            <img class="box-still" src="./public/media/opening-foreground-start.jpg" width="2048" height="1024" loading="lazy" decoding="async"
+                 alt="The yellow Sunday Fold box starts ajar, with pastries already peeking out.">
+            <video class="box-video" data-src="./public/media/opening-foreground.mp4" poster="./public/media/opening-foreground-start.jpg"
                    playsinline muted preload="none" aria-hidden="true" tabindex="-1"></video>
-            <img class="access-open" src="./public/media/opening-refined-end.jpg" width="1536" height="1024" loading="lazy" decoding="async"
+            <img class="access-open" src="./public/media/opening-foreground-end.jpg" width="2048" height="1024" loading="lazy" decoding="async"
                  alt="The open Sunday Fold box holds a butter croissant, a pain au chocolat and a fruit Danish.">
           </figure>
           <div class="box-controls">
@@ -105,7 +108,7 @@
           <figcaption>Seasonal Fruit Danish</figcaption>
         </figure>
         <figure data-reveal>
-          <div class="image-clip food-crop bread-photo"><img src="./public/media/house-sourdough-editorial.jpg" loading="lazy" decoding="async" width="1086" height="1448"
+          <div class="image-clip"><img src="./public/media/house-sourdough-neutral.jpg" loading="lazy" decoding="async" width="1200" height="857"
             alt="A crusty sourdough loaf on linen with two slices showing its open crumb."></div>
           <figcaption><a class="bread-menu-link" href="#menu-sourdough">House Sourdough</a></figcaption>
         </figure>
@@ -143,9 +146,9 @@
               <div><dt>Tea</dt><dd class="menu-price">£2.80</dd><dd class="menu-description">English Breakfast, Earl Grey or peppermint.</dd></div>
             </dl>
           </div>
-          <figure class="food-crop coffee-photo">
-            <img src="./public/media/flat-white-editorial.jpg" width="1086" height="1448" loading="lazy" decoding="async"
-                 alt="A hand holds a blue cup of flat white with latte art on a sunny yellow table.">
+          <figure class="food-crop sunday-table">
+            <img src="./public/media/sunday-breakfast.jpg" width="1086" height="1448" loading="lazy" decoding="async"
+                 alt="Two cups of coffee, sliced sourdough and butter croissants on a sunlit wooden breakfast table.">
           </figure>
         </div>
         <p class="menu-note">Please speak to our team about allergens before ordering.</p>
@@ -153,19 +156,24 @@
     </section>
 
     <section class="neighbourhood" id="brighton" aria-labelledby="closing-title">
-      <article class="closing-copy section-gutter">
-        <div>
-          <p class="eyebrow">Sunday Fold · Brighton</p>
-          <h2 id="closing-title">A little Sunday,<br>every day.</h2>
-        </div>
-        <div>
-          <p class="closing-positioning">Your everyday pause, made a little better.</p>
-          <p class="founder-story">Sunday Fold began with Sunday get-togethers for friends. Lucy Bennett baked the bread and pastries, and Daniel Reed made the coffee. Today, Lucy leads the baking while Daniel looks after the coffee and welcomes customers. Together, they bring that same feeling of being welcomed into a friend’s home to their neighbourhood bakery in Brighton.</p>
-        </div>
-      </article>
+      <div class="story-track">
+        <article class="closing-copy section-gutter">
+          <div>
+            <p class="eyebrow">Sunday Fold · Brighton</p>
+            <h2 id="closing-title">A little Sunday,<br>every day.</h2>
+          </div>
+          <div>
+            <p class="closing-positioning">Your everyday pause, made a little better.</p>
+            <div class="founder-story">
+              <p>Sunday Fold began with Sunday get-togethers for friends. Lucy Bennett baked the bread and pastries, and Daniel Reed made the coffee.</p>
+              <p>Today, Lucy leads the baking while Daniel looks after the coffee and welcomes customers. Together, they bring that same feeling of being welcomed into a friend’s home to their neighbourhood bakery in Brighton.</p>
+            </div>
+          </div>
+        </article>
+      </div>
       <div class="visit">
         <figure class="closing-photo">
-          <img src="./public/media/brighton.webp" loading="lazy" decoding="async" width="1060" height="1413"
+          <img src="./public/media/brighton-original.jpg" loading="lazy" decoding="async" width="1086" height="1448"
                alt="The blue and butter-yellow Sunday Fold bakery frontage, with bread in the window.">
         </figure>
         <div class="visit-details">
@@ -182,7 +190,7 @@
   </main>
 
   <footer class="footer">
-    <a class="brand" href="#top" aria-label="Sunday Fold home"><img src="./public/media/logo.png" width="91" height="56" alt="Sunday Fold"></a>
+    <a class="brand" href="#top" aria-label="Sunday Fold home"><img src="./public/media/sunday-fold-blue.svg" width="91" height="56" alt="Sunday Fold"></a>
     <address class="footer-contacts">
       <a href="mailto:hello@sundayfold.uk">hello@sundayfold.uk</a>
       <span>@sundayfoldbakery</span>
